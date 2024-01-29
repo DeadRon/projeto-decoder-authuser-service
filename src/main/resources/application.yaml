@@ -32,7 +32,7 @@ logging:
 ead:
   api:
     url:
-      course: 'http://localhost:8082'
+      course: 'http://ead-course-service'
 
 #Configurações do eureka para este microserviço encontrar o Service Registry e poder se registrar
 eureka:
