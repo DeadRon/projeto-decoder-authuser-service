@@ -269,3 +269,10 @@ Esse relacionamento é uma forma de criar uma associação da referencia dos rec
 ao invés de replicar todo o recurso e ter que lidar com a consistência.
 
 
+# Semana 4
+
+## Cross Cutting - Service Registry Discovery Pattern
+
+## Cross Cutting - API Gateway Pattern e Load Balance
+
+## Transação Distribuída para Deleção de Recursos entre Microservices
