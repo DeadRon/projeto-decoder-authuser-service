@@ -2,6 +2,8 @@ server:
   port: 8087
 
 spring:
+  application:
+    name: ead-authuser-service
   datasource:
     url:  jdbc:postgresql://localhost:5432/ead-authuser
     username: postgres
@@ -31,3 +33,11 @@ ead:
   api:
     url:
       course: 'http://localhost:8082'
+
+#Configurações do eureka para este microserviço encontrar o Service Registry e poder se registrar
+eureka:
+  client:
+    serviceUrl:
+      defautlZone: 'http://localhost:8087/eureka'
+    instance:
+      hostname: localhost
