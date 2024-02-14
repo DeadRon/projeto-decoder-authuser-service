@@ -57,7 +57,8 @@ public class UserCourseController {
 
     @DeleteMapping("/users/courses/{courseId")
     public ResponseEntity<Object> deleUserCourseByCourse(@PathVariable(value = "courseId") UUID courseId){
-        if(!userCourseService.existsBYCourseId(courseId)){
+        //verifica se na base AuthUser existe o curso a ser excluído
+        if(!userCourseService.existsByCourseId(courseId)){
             return  ResponseEntity.status(HttpStatus.NOT_FOUND).body("UserCourse not found.");
         }
         userCourseService.deleteUserCourseByCourse(courseId);
