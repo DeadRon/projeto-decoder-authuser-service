@@ -22,7 +22,7 @@ public class UserEventPublisher {
         userEventDTO.setActionType(actionType.toString());
         rabbitTemplate.convertAndSend(exchangeUserEvent, "", userEventDTO);
 
-        log.info("[PUBLISHER] - user sended to queue {}", userEventDTO.getUserId());
+        log.info("[USER EVENT PUBLISHER] user sended to exchange {}", userEventDTO.getUserId());
     }
 
 }
