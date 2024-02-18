@@ -1,6 +1,5 @@
 package com.ead.authuser.services.impl;
 
-import com.ead.authuser.enums.ActionType;
 import com.ead.authuser.models.UserModel;
 import com.ead.authuser.publisher.UserEventPublisher;
 import com.ead.authuser.repositories.UserRepository;
@@ -16,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import static com.ead.authuser.enums.ActionType.CREATE;
+import static com.ead.authuser.enums.ActionType.*;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -69,6 +68,26 @@ public class UserServiceImpl implements UserService {
         userModel = save(userModel);
         userEventPublisher.publisherUserEvent(userModel.convertToUserEventDTO(), CREATE);
         return userModel;
+    }
+
+    //mais operações para controle de usuários
+    @Override
+    public void deleteUser(UserModel userModel) {
+        delete(userModel);
+        userEventPublisher.publisherUserEvent(userModel.convertToUserEventDTO(), DELETE);
+    }
+
+    @Transactional
+    @Override
+    public UserModel updateUser(UserModel userModel) {
+        userModel = save(userModel);
+        userEventPublisher.publisherUserEvent(userModel.convertToUserEventDTO(), UPDATE);
+        return userModel;
+    }
+
+    @Override
+    public UserModel updatePassword(UserModel userModel) {
+        return null;
     }
 
 }
