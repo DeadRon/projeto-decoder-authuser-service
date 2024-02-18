@@ -64,9 +64,9 @@ public class UserController {
         if(!userModelOptional.isPresent()){
             return  ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found.");
         } else{
-            userService.delete(userModelOptional.get());
-            log.debug("DELETE deleteUser userId deleted {} ", userId);
-            log.info("User deleted successfully userId {} ", userId);
+            userService.deleteUser(userModelOptional.get());
+            log.debug("[USER CONTROLLER] DELETE deleteUser userId deleted {} ", userId);
+            log.info("[USER CONTROLLER] User deleted successfully userId {} ", userId);
             return  ResponseEntity.status(HttpStatus.OK).body("User deleted successfully.");
         }
     }
@@ -85,9 +85,9 @@ public class UserController {
             userModel.setPhoneNumber(userDto.getPhoneNumber());
             userModel.setCpf(userDto.getCpf());
             userModel.setLastUpdateDate(LocalDateTime.now(ZoneId.of("UTC")));
-            userService.save(userModel);
-            log.debug("PUT updateUser userId saved {} ", userModel.getUserId());
-            log.info("User updated successfully userId {} ", userModel.getUserId());
+            userService.updateUser(userModel);
+            log.debug("[USER CONTROLLER] PUT updateUser userId saved {} ", userModel.getUserId());
+            log.info("[USER CONTROLLER] User updated successfully userId {} ", userModel.getUserId());
             return  ResponseEntity.status(HttpStatus.OK).body(userModel);
         }
     }
@@ -107,9 +107,9 @@ public class UserController {
             var userModel = userModelOptional.get();
             userModel.setPassword(userDto.getPassword());
             userModel.setLastUpdateDate(LocalDateTime.now(ZoneId.of("UTC")));
-            userService.save(userModel);
-            log.debug("PUT updatePassword userId saved {} ", userModel.getUserId());
-            log.info("Password updated successfully userId {} ", userModel.getUserId());
+            userService.updatePassword(userModel);
+            log.debug("[USER CONTROLLER] PUT updatePassword userId saved {} ", userModel.getUserId());
+            log.info("[USER CONTROLLER] Password updated successfully userId {} ", userModel.getUserId());
             return  ResponseEntity.status(HttpStatus.OK).body("Password updated successfully.");
         }
     }
@@ -127,8 +127,8 @@ public class UserController {
             userModel.setImageUrl(userDto.getImageUrl());
             userModel.setLastUpdateDate(LocalDateTime.now(ZoneId.of("UTC")));
             userService.save(userModel);
-            log.debug("PUT updateImage userId saved {} ", userModel.getUserId());
-            log.info("Image updated successfully userId {} ", userModel.getUserId());
+            log.debug("[USER CONTROLLER] PUT updateImage userId saved {} ", userModel.getUserId());
+            log.info("[USER CONTROLLER] Image updated successfully userId {} ", userModel.getUserId());
             return  ResponseEntity.status(HttpStatus.OK).body(userModel);
         }
     }
