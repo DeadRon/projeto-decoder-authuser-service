@@ -51,3 +51,11 @@ eureka:
       defautlZone: 'http://localhost:8761/eureka'
     instance:
       hostname: localhost
+
+#Configurações do Resilience4J
+resilience4j:
+  retry:
+    instances:
+      retryInstance:
+        maxAttempts: 3
+        waitDuration: 5s
